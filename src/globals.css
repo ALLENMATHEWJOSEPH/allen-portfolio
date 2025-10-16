@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base color tokens for light and dark mode */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 210 40% 98%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 20% 40%;
+    --border: 220 13% 90%;
+  }
+
+  .dark {
+    --background: 240 6% 6%;
+    --foreground: 210 40% 96%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 210 40% 98%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 217 15% 70%;
+    --border: 240 6% 15%;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground font-sans scroll-smooth;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}

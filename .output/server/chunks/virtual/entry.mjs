@@ -471,7 +471,7 @@ const VIRTUAL_MODULES = {
 async function loadVirtualModule(id) {
   switch (id) {
     case VIRTUAL_MODULES.startManifest:
-      return await import('../_/_tanstack-start-manifest_v-DsayaFOf.mjs');
+      return await import('../_/_tanstack-start-manifest_v-BZ6fw3e4.mjs');
     case VIRTUAL_MODULES.serverFnManifest:
       return await import('../_/_tanstack-start-server-fn-manifest_v-DtgTK7xl.mjs');
     case VIRTUAL_MODULES.injectedHeadScripts:
@@ -796,7 +796,7 @@ function createStartHandler(cb) {
   let routerEntry = null;
   const getEntries = async () => {
     if (routerEntry === null) {
-      routerEntry = await import('../_/router-ssZQ5Q_9.mjs').then((n) => n.r);
+      routerEntry = await import('../_/router-Bdj2-q2n.mjs').then((n) => n.r);
     }
     if (startEntry === null) {
       startEntry = await import('../_/start-HYkvq4Ni.mjs');

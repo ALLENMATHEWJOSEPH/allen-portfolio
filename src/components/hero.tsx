@@ -1,42 +1,48 @@
-import { Circle } from "lucide-react";
-import BgGlowContainer from "./bg-glow-container";
+"use client";
+
+import React from "react";
+import { Button } from "@/components/ui/button";
 import { Socials } from "./socials";
-import { Separator } from "./ui/separator";
+import { Separator } from "@/components/ui/separator";
 import { Writer } from "./writer";
 import { JobStatusBadge } from "./job-status-badge";
 import { LocationBadge } from "./location-badge";
 
-const Terminal = () => {
+export function Hero() {
   return (
-    <div className=" bg-card rounded-2xl  border-2 shadow-sm   flex flex-col    font-mono md:min-h-[80px] w-[330px] md:w-[610px] text-3xl md:text-6xl tracking-tighter ">
-      <div className="p-4 rounded-t-xl  rounded-b-none bg-secondary  flex gap-2.5 border-b ">
-          <Circle className="h-3 w-3 md:h-4 md:w-4 text-red-500 fill-red-500  hover:fill-red-600 hover:text-red-600" />
-        <button>
-          <Circle className="h-3 w-3 md:h-4 md:w-4 text-yellow-500 fill-yellow-500 cursor-wait hover:fill-yellow-600 hover:text-yellow-600" />
-        </button>
-        <button>
-          <Circle className="h-3 w-3 md:h-4 md:w-4 text-green-500 fill-green-500 cursor-pointer hover:fill-green-600 hover:text-green-600" />
-        </button>
-      </div>
-
-      <div className="flex items-center ml-2 md:ml-5 lg:ml-7 gap-3 lg:gap-3.5 px-5 md:px-3 py-8 md:py-16">
-        <div className=" text-secondary-foreground font-black">&gt;</div>
-        <Writer text="Hey, I'm Allen!" />
-      </div>
-    </div>
-  );
-};
-
-export const Hero = () => {
-  return (
-    <section className="w-full py-16">
-      <div className="flex flex-col items-center justify-center gap-6">
-        <Terminal />
-        <div className="flex gap-3">
-          <JobStatusBadge />
-          <LocationBadge />
+    <section
+      id="home"
+      className="flex flex-col items-center justify-center min-h-screen px-6 text-center space-y-8"
+    >
+      <div className="space-y-4">
+        <JobStatusBadge />
+        <h1 className="text-4xl font-bold md:text-6xl text-primary">
+          Hi, I'm <span className="text-foreground">Allen Mathew Joseph</span>
+        </h1>
+        <h2 className="text-lg md:text-2xl text-muted-foreground">
+          <Writer />
+        </h2>
+        <Separator className="my-6 w-24 mx-auto" />
+        <p className="max-w-xl mx-auto text-sm md:text-base text-muted-foreground">
+          Data Analyst, Business Strategist, and AI Enthusiast crafting digital
+          tools that connect innovation with real-world impact.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+          <Button asChild>
+            <a href="#projects">View My Work</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="#contact">Contact Me</a>
+          </Button>
         </div>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center space-y-6">
+        <LocationBadge />
+        <Socials />
       </div>
     </section>
   );
-};
+}
+
+export default Hero;

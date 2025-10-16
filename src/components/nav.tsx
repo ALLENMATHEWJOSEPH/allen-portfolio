@@ -1,124 +1,72 @@
 "use client";
-import { useEffect, useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 import { Socials } from "./socials";
 
-type NavLinkProps = {
-  href: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-  isActive?: boolean;
-};
-
-const NavLink = ({ href, children, onClick, isActive }: NavLinkProps) => (
-  <a
-    href={href}
-    className={`text-sm font-medium transition-colors hover:text-primary ${
-      isActive ? "text-primary" : "text-muted-foreground"
-    }`}
-    onClick={onClick}
-  >
-    {children}
-  </a>
-);
-
-export const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState<string>("#top");
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const updateHash = () => {
-      const { hash } = window.location;
-      setActiveHash(hash || "#top");
-    };
-    updateHash();
-    window.addEventListener("hashchange", updateHash);
-    return () => window.removeEventListener("hashchange", updateHash);
-  }, []);
-
-  const setHash = (hash: string) => () => {
-    setActiveHash(hash || "#top");
-    if (hash.startsWith("#")) {
-      setTimeout(() => setIsOpen(false), 0);
-    }
-  };
-
+export function Nav() {
   const navItems = [
-    { href: "#projects", label: "Projects" },
-    { href: "#experience", label: "Experience" },
-    { href: "#education", label: "Education" },
-    { href: "#skills", label: "Skills" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="bg-card fixed top-0 left-0 right-0 z-50 border-b">
-      <div className="mx-auto py-4 px-10 flex items-center justify-evenly space-x-3">
-        <nav className="hidden w-full lg:flex items-center justify-between gap-4">
-          <div className="flex space-x-4 items-center">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
+      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+        {/* Logo */}
+        <a href="/" className="font-semibold text-xl text-primary">
+          Allen<span className="text-foreground">MJ</span>
+        </a>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => (
             <a
-              href="#top"
-              className="text-primary text-lg font-semibold tracking-wider hover:text-muted-foreground"
-              onClick={setHash("#top")}
+              key={item.name}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              Allen Mathew Joseph
+              {item.name}
             </a>
-            <Socials />
-          </div>
-          <div className="hidden md:flex space-x-6 items-center">
-            {navItems.map((item, index) => (
-              <NavLink
-                key={index}
-                href={item.href}
-                isActive={activeHash === item.href}
-                onClick={setHash(item.href)}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </div>
+          ))}
+          <Separator orientation="vertical" className="h-6" />
+          <Socials />
+          <Button variant="outline" className="ml-4">
+            Resume
+          </Button>
         </nav>
 
-        <nav className="flex items-center lg:hidden justify-between w-full">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <a
-              href="#top"
-              className="text-primary text-base font-semibold tracking-wider hover:text-muted-foreground"
-              onClick={setHash("#top")}
-            >
-              Allen Mathew Joseph
-            </a>
-
+        {/* Mobile Nav */}
+        <div className="md:hidden">
+          <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="ml-2 text-muted-foreground">
-                <RxHamburgerMenu className="h-5 w-5" />
+              <Button variant="outline" className="p-2 text-sm">
+                ☰
               </Button>
             </SheetTrigger>
-            <SheetContent>
-              <div className="flex flex-col space-y-6">
-                <div className="flex flex-col lg:flex-row text-left items-start lg:items-center font-sm lg:space-y-0 space-y-6 w-full">
-                  {navItems.map((item, index) => (
-                    <div className="py-1 w-full" key={index}>
-                      <NavLink
-                        href={item.href}
-                        onClick={setHash(item.href)}
-                        isActive={activeHash === item.href}
-                      >
-                        {item.label}
-                      </NavLink>
-                    </div>
-                  ))}
-                </div>
-                <Socials />
-              </div>
+            <SheetContent side="right" className="flex flex-col gap-6 p-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-base font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </a>
+              ))}
+              <Separator />
+              <Socials />
             </SheetContent>
           </Sheet>
-        </nav>
-        <ThemeSwitcher />
+        </div>
       </div>
     </header>
   );
-};
+}
+
+export default Nav;

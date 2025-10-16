@@ -1,21 +1,20 @@
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { cva } from 'class-variance-authority';
-import { B as Button, c as cn } from './router-ssZQ5Q_9.mjs';
+import { S as Separator, B as Button, a as Socials, c as cn } from './router-Bdj2-q2n.mjs';
 import * as React from 'react';
 import { createElement, useState, useEffect } from 'react';
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { Circle, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FaPython, FaChartBar, FaGithub } from 'react-icons/fa';
+import { ShieldCheck } from 'lucide-react';
 import { BiLogoTypescript } from 'react-icons/bi';
 import { SiPostgresql, SiTableau, SiGooglecloud, SiSupabase, SiFirebase, SiGit } from 'react-icons/si';
 import { FaAws, FaReact, FaLinux } from 'react-icons/fa6';
 import '@tanstack/react-router';
-import 'react-icons/rx';
-import 'next-themes';
 import 'clsx';
 import 'tailwind-merge';
 import '@radix-ui/react-dialog';
+import '@radix-ui/react-separator';
+import 'next-themes';
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -86,21 +85,6 @@ const CardFooter = React.forwardRef(({ className, ...props }, ref) => /* @__PURE
   }
 ));
 CardFooter.displayName = "CardFooter";
-const Separator = React.forwardRef(({ className, orientation = "horizontal", decorative = true, ...props }, ref) => /* @__PURE__ */ jsx(
-  SeparatorPrimitive.Root,
-  {
-    ref,
-    decorative,
-    orientation,
-    className: cn(
-      "shrink-0 bg-border",
-      orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
-      className
-    ),
-    ...props
-  }
-));
-Separator.displayName = SeparatorPrimitive.Root.displayName;
 const Education = () => {
   return /* @__PURE__ */ jsxs("section", { className: "flex flex-col justify-center items-center mx-10 gap-4 py-12 md:py-24 lg:py-32 space-y-6", id: "education", children: [
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-center justify-center gap-7 text-center", children: [
@@ -258,28 +242,35 @@ const LocationBadge = () => {
     /* @__PURE__ */ jsx("p", { children: "Ontario, Canada" })
   ] });
 };
-const Terminal = () => {
-  return /* @__PURE__ */ jsxs("div", { className: " bg-card rounded-2xl  border-2 shadow-sm   flex flex-col    font-mono md:min-h-[80px] w-[330px] md:w-[610px] text-3xl md:text-6xl tracking-tighter ", children: [
-    /* @__PURE__ */ jsxs("div", { className: "p-4 rounded-t-xl  rounded-b-none bg-secondary  flex gap-2.5 border-b ", children: [
-      /* @__PURE__ */ jsx(Circle, { className: "h-3 w-3 md:h-4 md:w-4 text-red-500 fill-red-500  hover:fill-red-600 hover:text-red-600" }),
-      /* @__PURE__ */ jsx("button", { children: /* @__PURE__ */ jsx(Circle, { className: "h-3 w-3 md:h-4 md:w-4 text-yellow-500 fill-yellow-500 cursor-wait hover:fill-yellow-600 hover:text-yellow-600" }) }),
-      /* @__PURE__ */ jsx("button", { children: /* @__PURE__ */ jsx(Circle, { className: "h-3 w-3 md:h-4 md:w-4 text-green-500 fill-green-500 cursor-pointer hover:fill-green-600 hover:text-green-600" }) })
-    ] }),
-    /* @__PURE__ */ jsxs("div", { className: "flex items-center ml-2 md:ml-5 lg:ml-7 gap-3 lg:gap-3.5 px-5 md:px-3 py-8 md:py-16", children: [
-      /* @__PURE__ */ jsx("div", { className: " text-secondary-foreground font-black", children: ">" }),
-      /* @__PURE__ */ jsx(Writer, { text: "Hey, I'm Allen!" })
-    ] })
-  ] });
-};
-const Hero = () => {
-  return /* @__PURE__ */ jsx("section", { className: "w-full py-16", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-center justify-center gap-6", children: [
-    /* @__PURE__ */ jsx(Terminal, {}),
-    /* @__PURE__ */ jsxs("div", { className: "flex gap-3", children: [
-      /* @__PURE__ */ jsx(JobStatusBadge, {}),
-      /* @__PURE__ */ jsx(LocationBadge, {})
-    ] })
-  ] }) });
-};
+function Hero() {
+  return /* @__PURE__ */ jsxs(
+    "section",
+    {
+      id: "home",
+      className: "flex flex-col items-center justify-center min-h-screen px-6 text-center space-y-8",
+      children: [
+        /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsx(JobStatusBadge, {}),
+          /* @__PURE__ */ jsxs("h1", { className: "text-4xl font-bold md:text-6xl text-primary", children: [
+            "Hi, I'm ",
+            /* @__PURE__ */ jsx("span", { className: "text-foreground", children: "Allen Mathew Joseph" })
+          ] }),
+          /* @__PURE__ */ jsx("h2", { className: "text-lg md:text-2xl text-muted-foreground", children: /* @__PURE__ */ jsx(Writer, {}) }),
+          /* @__PURE__ */ jsx(Separator, { className: "my-6 w-24 mx-auto" }),
+          /* @__PURE__ */ jsx("p", { className: "max-w-xl mx-auto text-sm md:text-base text-muted-foreground", children: "Data Analyst, Business Strategist, and AI Enthusiast crafting digital tools that connect innovation with real-world impact." }),
+          /* @__PURE__ */ jsxs("div", { className: "flex flex-col sm:flex-row gap-4 justify-center mt-6", children: [
+            /* @__PURE__ */ jsx(Button, { asChild: true, children: /* @__PURE__ */ jsx("a", { href: "#projects", children: "View My Work" }) }),
+            /* @__PURE__ */ jsx(Button, { variant: "outline", asChild: true, children: /* @__PURE__ */ jsx("a", { href: "#contact", children: "Contact Me" }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "mt-10 flex flex-col items-center space-y-6", children: [
+          /* @__PURE__ */ jsx(LocationBadge, {}),
+          /* @__PURE__ */ jsx(Socials, {})
+        ] })
+      ]
+    }
+  );
+}
 const ProjectCard = ({
   logo,
   title,
@@ -425,4 +416,4 @@ function HomePage() {
 }
 
 export { HomePage as component };
-//# sourceMappingURL=index-BPc64zCL.mjs.map
+//# sourceMappingURL=index-hYQfz2S0.mjs.map
