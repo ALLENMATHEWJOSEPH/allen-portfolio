@@ -2,7 +2,7 @@ import { Circle } from "lucide-react";
 import BgGlowContainer from "./bg-glow-container";
 import { Socials } from "./socials";
 import { Separator } from "./ui/separator";
-import Writer from "./writer";
+import { Writer } from "./writer";
 import { JobStatusBadge } from "./job-status-badge";
 import { LocationBadge } from "./location-badge";
 

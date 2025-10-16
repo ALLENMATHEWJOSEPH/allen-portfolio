@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional global tweaks */
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* Example background for testing */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}

@@ -1,31 +1,37 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+} from "@tanstack/react-router";
 
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-import { Footer } from '@/components/footer'
-import { Nav } from '@/components/nav'
-import { ThemeProvider } from '@/components/ui/theme-provider'
-
-import appCss from '@/styles.css?url'
+import { Footer } from "@/components/footer";
+import { Nav } from "@/components/nav";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import "@/styles.css"; // ✅ normal import (no ?url)
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Allen Mathew Joseph' },
-      { name: 'description', content: 'Allen Mathew Joseph — portfolio, projects, experience, and contact.' },
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Allen Mathew Joseph" },
+      {
+        name: "description",
+        content:
+          "Allen Mathew Joseph — portfolio, projects, experience, and contact.",
+      },
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', type: 'image/png', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', href: '/favicon-16x16.png' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-      { rel: 'manifest', href: '/site.webmanifest' },
+      // Removed the CSS link — not needed
+      { rel: "icon", type: "image/png", href: "/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", href: "/favicon-16x16.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootDocument,
-})
+});
 
 function RootDocument({ children }: { children: ReactNode }) {
   return (
@@ -51,5 +57,5 @@ function RootDocument({ children }: { children: ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
