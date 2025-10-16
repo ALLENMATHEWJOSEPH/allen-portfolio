@@ -1,26 +1,45 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.ts"],
-  
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "eslint.config.js",
+    "prettier.config.js",
+    "vite.config.ts"
+  ],
   "compilerOptions": {
+    /* =============================
+       🧠 Core Compiler Settings
+    ============================== */
     "target": "ES2022",
-    "jsx": "react-jsx",
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
     "types": ["vite/client"],
 
+    /* =============================
+       🛠️ Module Resolution
+    ============================== */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
-    "noEmit": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
 
-    "skipLibCheck": true,
+    /* ✅ Path alias for @/* → src/* */
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* =============================
+       ⚙️ Strictness and Build Options
+    ============================== */
     "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "paths": {
-      "@/*": ["./src/*"],
-    }
+    "noUncheckedSideEffectImports": true
   }
 }
